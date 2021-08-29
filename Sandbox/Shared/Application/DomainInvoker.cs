@@ -27,28 +27,28 @@ namespace Sandbox.Shared.Application
             }
             
             entity.SetupCheckRulesAction(
-                e => e.RulesToCheck.Count == 0 
+                (rulesToCheck) => rulesToCheck.Count == 0 
                     ? Task.FromResult((IBusinessRuleResult)new BusinessRuleSuccess()) 
-                    : CheckRules(e.RulesToCheck));
+                    : CheckRules(rulesToCheck));
             
             var expressionCompiled = expression.Compile();
             return expressionCompiled();
         }
 
-        private async Task<IBusinessRuleResult> CheckRules(IEnumerable<(Type, object[])> rules)
+        private async Task<IBusinessRuleResult> CheckRules(IEnumerable<RuleInfo> ruleInfos)
         {
-            foreach (var (ruleType, ruleArgs) in rules)
+            foreach (var ruleInfo in ruleInfos)
             {
-                var rule = _businessRulesFactory(ruleType);
+                var rule = _businessRulesFactory(ruleInfo.Type);
                 
                 const string? methodName = nameof(BusinessRule<object>.Check);
-                var checkMethod = ruleType.GetMethod(methodName)!;
+                var checkMethod = ruleInfo.Type.GetMethod(methodName)!;
                 
-                var task = checkMethod.Invoke(rule, ruleArgs);
+                var task = checkMethod.Invoke(rule, ruleInfo.Args);
                 if (task is null)
                 {
                     throw new InvalidOperationException(
-                        $"{nameof(methodName)} in class {ruleType.Name} cannot return null");
+                        $"{nameof(methodName)} in class {ruleInfo.Type.Name} cannot return null");
                 }
                 
                 var taskTyped = (Task<IBusinessRuleResult>)task;

@@ -6,22 +6,19 @@ namespace Sandbox.Shared.Domain
 {
     public abstract class DomainEntity
     {
-        private readonly List<(Type, object[])> _rulesToCheck = new();
-        private Func<DomainEntity, Task<IBusinessRuleResult>>? _checkRulesAction;
+        private readonly List<RuleInfo> _rulesToCheck = new();
+        private Func<IReadOnlyList<RuleInfo>, Task<IBusinessRuleResult>>? _checkRulesAction;
         private IBusinessRuleResult? _ruleResult;
         
-        public IReadOnlyList<(Type, object[])> RulesToCheck => _rulesToCheck;
-        
-        public void SetupCheckRulesAction(Func<DomainEntity, Task<IBusinessRuleResult>> action)
-        {
+        public void SetupCheckRulesAction(Func<IReadOnlyList<RuleInfo>, Task<IBusinessRuleResult>> action) => 
             _checkRulesAction = action;
-        }
-        
+
         protected void CheckRule<TRule, TArg>(TArg arg) 
             where TRule : BusinessRule<TArg> 
             where TArg : notnull
         {
-            _rulesToCheck.Add((typeof(TRule), new object[] { arg }));
+            var ruleInfo = new RuleInfo(typeof(TRule), new object[] { arg });
+            _rulesToCheck.Add(ruleInfo);
         }
         
         protected void CheckRule<TRule, TArg1, TArg2>(TArg1 arg1, TArg2 arg2) 
@@ -29,7 +26,8 @@ namespace Sandbox.Shared.Domain
             where TArg1 : notnull
             where TArg2 : notnull
         {
-            _rulesToCheck.Add((typeof(TRule), new object[] { arg1, arg2 }));
+            var ruleInfo = new RuleInfo(typeof(TRule), new object[] { arg1, arg2 });
+            _rulesToCheck.Add(ruleInfo);
         }
         
         protected void CheckRule<TRule, TArg1, TArg2, TArg3>(TArg1 arg1, TArg2 arg2, TArg3 arg3) 
@@ -38,7 +36,8 @@ namespace Sandbox.Shared.Domain
             where TArg2 : notnull
             where TArg3 : notnull
         {
-            _rulesToCheck.Add((typeof(TRule), new object[] { arg1, arg2, arg3 }));
+            var ruleInfo = new RuleInfo(typeof(TRule), new object[] { arg1, arg2, arg3 });
+            _rulesToCheck.Add(ruleInfo);
         }
         
         protected async Task<bool> IsAnyRuleBroken()
@@ -49,7 +48,7 @@ namespace Sandbox.Shared.Domain
                     $"method has not been called with DomainInvoker");
             }
             
-            _ruleResult = await _checkRulesAction(this);
+            _ruleResult = await _checkRulesAction(_rulesToCheck);
             
             return !_ruleResult.IsFulfilled;
         }
@@ -61,7 +60,11 @@ namespace Sandbox.Shared.Domain
                 throw new InvalidOperationException(
                     $"rule result is not ready, {nameof(IsAnyRuleBroken)} was not called or completed");
             }
-            return _ruleResult;
+            
+            var result = _ruleResult;
+            _ruleResult = null;
+            
+            return result;
         }
         
         protected IBusinessRuleResult Ok() => new BusinessRuleSuccess();
