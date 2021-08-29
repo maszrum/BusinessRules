@@ -9,9 +9,9 @@ namespace Shared.Application
 {
     public class DomainInvoker
     {
-        private readonly Func<Type, object> _businessRulesFactory;
+        private readonly BusinessRulesFactory _businessRulesFactory;
 
-        public DomainInvoker(Func<Type, object> businessRulesFactory)
+        public DomainInvoker(BusinessRulesFactory businessRulesFactory)
         {
             _businessRulesFactory = businessRulesFactory;
         }
