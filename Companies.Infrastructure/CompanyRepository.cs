@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Sandbox.Domain;
+using Companies.Domain;
 
-namespace Sandbox.Infrastructure
+namespace Companies.Infrastructure
 {
     public class CompanyRepository : ICompanyRepository
     {

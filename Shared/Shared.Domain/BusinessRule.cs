@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Sandbox.Shared.Domain
+namespace Shared.Domain
 {
     public abstract class BusinessRule
     {

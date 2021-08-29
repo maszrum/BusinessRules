@@ -3,12 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sandbox", "Sandbox\Sandbox.csproj", "{8DC1C056-94FD-4099-B42D-1777743758CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{8DC1C056-94FD-4099-B42D-1777743758CD}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FA551BA1-0DC8-4DA7-8E50-A6505B444611}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-	EndProjectSection
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{6A4CFCBF-7717-4AD1-AA62-ABFCC6BAD12A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Application", "Shared\Shared.Application\Shared.Application.csproj", "{450AB71F-C2A9-41FB-A20E-AF03BC837805}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Domain", "Shared\Shared.Domain\Shared.Domain.csproj", "{C6313B79-C900-4DB5-940A-A5A9317A8FDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Companies.Domain", "Companies.Domain\Companies.Domain.csproj", "{F4D6D834-3134-49DF-B054-887EEEBCD314}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Companies.Infrastructure", "Companies.Infrastructure\Companies.Infrastructure.csproj", "{55D75E4F-FAC5-4E12-8DDA-0EBE53DF58AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Companies.Application", "Companies.Application\Companies.Application.csproj", "{A872A7CD-678B-4D7C-B1F6-EA68E0D924A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,11 +27,35 @@ Global
 		{8DC1C056-94FD-4099-B42D-1777743758CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DC1C056-94FD-4099-B42D-1777743758CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DC1C056-94FD-4099-B42D-1777743758CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{450AB71F-C2A9-41FB-A20E-AF03BC837805}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{450AB71F-C2A9-41FB-A20E-AF03BC837805}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{450AB71F-C2A9-41FB-A20E-AF03BC837805}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{450AB71F-C2A9-41FB-A20E-AF03BC837805}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6313B79-C900-4DB5-940A-A5A9317A8FDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6313B79-C900-4DB5-940A-A5A9317A8FDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6313B79-C900-4DB5-940A-A5A9317A8FDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6313B79-C900-4DB5-940A-A5A9317A8FDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4D6D834-3134-49DF-B054-887EEEBCD314}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4D6D834-3134-49DF-B054-887EEEBCD314}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4D6D834-3134-49DF-B054-887EEEBCD314}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4D6D834-3134-49DF-B054-887EEEBCD314}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55D75E4F-FAC5-4E12-8DDA-0EBE53DF58AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55D75E4F-FAC5-4E12-8DDA-0EBE53DF58AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55D75E4F-FAC5-4E12-8DDA-0EBE53DF58AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55D75E4F-FAC5-4E12-8DDA-0EBE53DF58AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A872A7CD-678B-4D7C-B1F6-EA68E0D924A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A872A7CD-678B-4D7C-B1F6-EA68E0D924A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A872A7CD-678B-4D7C-B1F6-EA68E0D924A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A872A7CD-678B-4D7C-B1F6-EA68E0D924A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2B2E1CF6-53D6-4B9E-B0D6-766A552AC11D}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{450AB71F-C2A9-41FB-A20E-AF03BC837805} = {6A4CFCBF-7717-4AD1-AA62-ABFCC6BAD12A}
+		{C6313B79-C900-4DB5-940A-A5A9317A8FDD} = {6A4CFCBF-7717-4AD1-AA62-ABFCC6BAD12A}
 	EndGlobalSection
 EndGlobal

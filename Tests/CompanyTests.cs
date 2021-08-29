@@ -1,18 +1,18 @@
 ﻿using System.Threading.Tasks;
+using Companies.Domain;
+using Companies.Infrastructure;
 using NUnit.Framework;
-using Sandbox.Domain;
-using Sandbox.Infrastructure;
-using Sandbox.Shared.Application;
+using Shared.Application;
 
-namespace Sandbox
+namespace Tests
 {
     [TestFixture]
-    public class Client
+    public class CompanyTests
     {
         private readonly ICompanyRepository _companyRepository;
         private readonly DomainInvoker _domainInvoker;
         
-        public Client()
+        public CompanyTests()
         {
             // objects normally created by DI container
             _companyRepository = new CompanyRepository();

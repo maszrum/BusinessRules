@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sandbox.Shared.Domain
+namespace Shared.Domain
 {
     public class RuleInfo
     {

@@ -1,4 +1,4 @@
-﻿namespace Sandbox.Shared.Domain
+﻿namespace Shared.Domain
 {
     public interface IBusinessRuleResult
     {

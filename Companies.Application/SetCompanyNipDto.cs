@@ -1,4 +1,4 @@
-﻿namespace Sandbox.Application
+﻿namespace Companies.Application
 {
     public class SetCompanyNipDto
     {

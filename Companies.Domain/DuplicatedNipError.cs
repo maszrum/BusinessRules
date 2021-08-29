@@ -1,6 +1,6 @@
-﻿using Sandbox.Shared.Domain;
+﻿using Shared.Domain;
 
-namespace Sandbox.Domain
+namespace Companies.Domain
 {
     public class DuplicatedNipError : IBusinessRuleResult
     {

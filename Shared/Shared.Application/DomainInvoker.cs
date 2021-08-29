@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Threading.Tasks;
-using Sandbox.Shared.Domain;
+using Shared.Domain;
 
-namespace Sandbox.Shared.Application
+namespace Shared.Application
 {
     public class DomainInvoker
     {

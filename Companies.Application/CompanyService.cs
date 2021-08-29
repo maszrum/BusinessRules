@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using Sandbox.Domain;
-using Sandbox.Shared.Application;
+using Companies.Domain;
+using Shared.Application;
 
-namespace Sandbox.Application
+namespace Companies.Application
 {
     public class CompanyService // or command-handler
     {

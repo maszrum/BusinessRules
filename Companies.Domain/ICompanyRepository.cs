@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Sandbox.Domain
+namespace Companies.Domain
 {
     public interface ICompanyRepository
     {

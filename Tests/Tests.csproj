@@ -23,4 +23,10 @@
     <PackageReference Include="System.Windows.Forms.DataVisualization" Version="1.0.0-prerelease.20110.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Companies.Domain\Companies.Domain.csproj" />
+    <ProjectReference Include="..\Companies.Infrastructure\Companies.Infrastructure.csproj" />
+    <ProjectReference Include="..\Shared\Shared.Application\Shared.Application.csproj" />
+  </ItemGroup>
+
 </Project>
