@@ -49,6 +49,7 @@ namespace Shared.Domain
             }
             
             _ruleResult = await _checkRulesAction(_rulesToCheck);
+            _rulesToCheck.Clear();
             
             return !_ruleResult.IsFulfilled;
         }
